@@ -8,11 +8,19 @@ const Task1: FunctionComponent = () => {
 
   const onSubmit = (event: React.FormEvent) => {
     // If you want to do something with form submit
+    const formElement = event.target as HTMLElement;
+      if(email.length == 0 || password.length == 0 ) { // stupid "security"
+        formElement.classList.add("error")
+      } else {
+        formElement.classList.remove("error")
+
+      }
+      event.preventDefault()
   };
 
   return (
     <div id="task-1">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="">
         <h1>Welcome back.</h1>
         <label htmlFor="task-1-input">Email</label>
         <input
