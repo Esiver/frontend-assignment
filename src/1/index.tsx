@@ -8,9 +8,6 @@ const Task1: FunctionComponent = () => {
 
   const onSubmit = (event: React.FormEvent) => {
     // If you want to do something with form submit
-    console.log(event)
-    // alert(`Email: ${email} \nPassword: ${password}`);
-    
   };
 
   return (
