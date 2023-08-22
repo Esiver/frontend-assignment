@@ -8,7 +8,7 @@ import "./index.scss";
 import { recipeData } from "./data";
 
 //interfaces
-import { IRecipe } from "./Interfaces";
+import { IRecipe, ISearchQuery } from "./Interfaces";
 
 // components
 import MenuList from "./components/MenuList";
@@ -20,6 +20,7 @@ import { Button } from "./components/Button";
 // Menu App
 
 const Task3: React.FunctionComponent = () => {
+  const [searchQuery, setSearchQuery] = useState<ISearchQuery>({ query: "" });
   const [searchResultList, setSearchResultList] = useState<IRecipe[]>([]);
   const [recipeList, setRecipeList] = useState<IRecipe[]>([...recipeData]);
   const [activeList, setActiveList] = useState<IRecipe[]>([]);
@@ -46,17 +47,22 @@ const Task3: React.FunctionComponent = () => {
       setRecipeList(prevRecipeList);
     }
     updateActiveList(recipe);
-    setSearchResultList([]);
+    handleSearch(searchQuery);
   }
 
   function toggleShowFilter() {
     setShowFilter((prevVisibility) => !prevVisibility);
   }
 
-  function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-    if (e.target.value.length > 0 && e.target.value !== "") {
+
+  function handleSearchInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setSearchQuery({ query: e.target.value });
+    handleSearch({ query: e.target.value });
+  }
+  function handleSearch(sq: ISearchQuery) {
+    if (sq.query.length > 0 && sq.query !== "") {
       const filteredRecipeList = recipeList.filter((item) => {
-        return item.title.toLowerCase().includes(e.target.value.toLowerCase());
+        return item.title.toLowerCase().includes(sq.query.toLowerCase());
       });
       setSearchResultList(filteredRecipeList);
     } else {
@@ -67,31 +73,26 @@ const Task3: React.FunctionComponent = () => {
   return (
     <div id="task-3">
       <section className=" section section__options">
-      <Notice
+        <Notice
           title="Welcome"
           description="This is the restaurant app! Here you can get an overview on what we will serve tonigth"
           stringList={[
-            `Total Recipes: ${recipeList.length}`, 
-            `Active Recipes: ${activeList.length}`
-            
+            `Total Recipes: ${recipeList.length}`,
+            `Active Recipes: ${activeList.length}`,
           ]}
-          
-
         />
         <MenuItemForm
           formTitle="Add New Recipe"
           setTargetList={setRecipeList}
           targetList={recipeList}
         />
-
-
       </section>
 
       {/* <h3>Filter & Search</h3> */}
       <Button text="Toggle Filter" onClick={() => toggleShowFilter()} />
       {showFilter ? (
         <section className="section section__filter">
-          <SearchBar onChange={handleSearch} />
+          <SearchBar onChange={handleSearchInputChange} />
 
           <MenuList
             menuClass="mini horizontal search-list"

@@ -4,7 +4,9 @@ export interface IButtonProps {
     onClick: (e:void|IRecipe) => void | IRecipe;
     text:string;
 }
-
+export interface ISearchQuery {
+    query:string;
+}
 export interface ISearchBarProps {
     onChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
 }

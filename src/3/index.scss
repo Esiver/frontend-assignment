@@ -1,4 +1,4 @@
-$color--main: rgb(0, 101, 141);
+$color--main: #598ca0;
 $color--secondary: rgb(0, 10, 54);
 $color--button: darken($color--main, 10);
 $color--buton-text: white;
@@ -45,16 +45,19 @@ $color--active: $color--main;
 .notice {
   &__wrapper {
     padding: 10px 12px;
-    max-width: 75%;
+    max-width: 60%;
   }
 }
 .card {
   padding: 10px 12px;
   border-radius: 3px;
-  background-color: $color--main;
+  background-color: lighten($color--main, 15);
   color: white;
   width: fit-content;
   flex: 1;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
 
   &__buttons {
     display: flex;
