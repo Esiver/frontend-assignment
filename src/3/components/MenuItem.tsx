@@ -15,9 +15,11 @@ const MenuItem: React.FC<IMenuItem> = ({ recipe, toggleRecipe, activeList, remov
         <h1>{recipe.title}</h1>
         <p>{recipe.description}</p>
         <p>{recipe.priceCurrency} {recipe.price}</p>
+        <div className="card__buttons">
+            <Button text={isActive ? "Set Inactive" : "Set Active"} onClick={()=>toggleActiveList(recipe)} />
+            <Button text="Delete" onClick={()=>removeRecipe(recipe)} />
+        </div>
         
-        <Button text={isActive ? "Toggle Inactive" : "Toggle Active"} onClick={()=>toggleActiveList(recipe)} />
-        <Button text="Delete" onClick={()=>removeRecipe(recipe)} />
       </li>
     );
   };

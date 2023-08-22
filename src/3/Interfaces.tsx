@@ -15,6 +15,12 @@ export interface IMenuItemFormProps {
     targetList:IRecipe[];
 }
 
+export interface INoticeProps {
+    title:string;
+    description:string;
+    stringList:string[];
+}
+
 
 export interface IMaterial {
     title:string

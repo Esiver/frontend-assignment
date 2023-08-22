@@ -6,6 +6,7 @@ $color--buton-text: white;
 $color--active: $color--main;
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-3 {
+  position: relative;
   /* Styles goes here */
   label {
     margin-top: 1rem;
@@ -18,33 +19,92 @@ $color--active: $color--main;
   }
 }
 
+
+
+.section{
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  &__filter {
+    background-color: $color--button;
+    padding: 1rem;
+    
+  }
+
+  &__options{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+  }
+  &.dialog-mode {
+    position: absolute;
+  }
+
+  
+}
+
+.notice {
+  &__wrapper {
+    padding: 10px 12px;
+    max-width: 75%;
+  }
+}
 .card {
   padding: 10px 12px;
   border-radius: 3px;
   background-color: $color--main;
   color: white;
+  width: fit-content;
+  flex: 1;
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .mini & {
+      flex-direction: row;
+      margin-top: 0;
+    }
+
+  }
 
   .active & {
     box-shadow: 0 0 10px 0px $color--active;
     background-color: lighten($color--main, 10%);
   }
+  .mini & {
+    background-color: $color--secondary;
+    flex: 25%;
+    h1 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
 }
 
 .menu {
   &__list {
-    $menulist:&;
-
-    padding: 0;
+    // max-width: 620px;
+    flex-wrap: wrap;
+    overflow: auto;
+    padding: 2rem 1rem;
     margin: 1rem 0;
     display: flex;
     flex-direction: row;
     gap: 1rem;
+
+    &.horizontal {
+      flex-direction: row;
+    }
+    &.search-list {
+    }
   }
 
   &__item {
     list-style: none;
-    display: flex;
-    flex-direction: column;
+    max-width: 33%;
+    min-width: 25%;
   }
 
   &__form {
@@ -56,11 +116,15 @@ $color--active: $color--main;
     color:white;
     background-color: $color--main;
     max-width: 500px;
+
+    .button {
+      margin-top: 1rem;
+    }
   }
 }
 
 .button {
-  padding: 1rem 2rem;
+  padding: 12px 8px;
   background-color: $color--button;
   color: $color--buton-text;
   text-align: center;
@@ -71,10 +135,12 @@ $color--active: $color--main;
   &:hover {
     background-color: lighten($color--button, 5);
   }
-  & + .button {
-    margin-top: .5rem;
-  }
-  &:last-child {
-    margin-top: 1rem;
+  
+  // &:last-child {
+  //   margin-top: 1rem;
+  // }
+
+  .mini & { 
+    font-size: 12px;
   }
 }
