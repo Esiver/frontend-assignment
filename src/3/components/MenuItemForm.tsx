@@ -2,10 +2,7 @@ import { Recipe, IMenuItemFormProps } from "../Interfaces";
 import { Button } from "./Button";
 import {  useState } from "react";
 
-
-
-
-export const MenuItemForm:React.FunctionComponent<IMenuItemFormProps> = ({targetList, setTargetList}:IMenuItemFormProps) => {
+export const MenuItemForm:React.FunctionComponent<IMenuItemFormProps> = ({formTitle, targetList, setTargetList}:IMenuItemFormProps) => {
     
     const [input, setInput] = useState({
         id:"",
@@ -16,10 +13,6 @@ export const MenuItemForm:React.FunctionComponent<IMenuItemFormProps> = ({target
     });
 
     const clearFields = () => {
-        // const {title, description, price, priceCurrency} = input;
-        // input.title =""
-        
-        // console.log("!!!",input)
         setInput({
             id:"",
             title:"",
@@ -61,7 +54,7 @@ export const MenuItemForm:React.FunctionComponent<IMenuItemFormProps> = ({target
     return(
         <div className="menu__form">
 
-            {/* <input type="text" hidden /> */}
+            <h2>{formTitle}</h2>
 
             <label htmlFor="">Title</label>
             <input type="text" name="title" id="title" value={input.title} onChange={handleChange} />

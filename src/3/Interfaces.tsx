@@ -10,6 +10,7 @@ export interface SearchBarProps {
 }
 
 export interface IMenuItemFormProps {
+    formTitle:string;
     setTargetList:  Dispatch<React.SetStateAction<Recipe[]>>;
     targetList:Recipe[];
 }
