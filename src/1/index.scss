@@ -36,12 +36,24 @@
     background-color: #63830d; 
     font-size: 18px;
     border-radius: 3px;
-
     color: white;
     border: none;
     cursor: pointer;
     transition: background-color 150ms ease;
+    position: relative;
 
+    &.idle {
+      transition: background-color 400ms ease;
+      background-color: #1d500f;
+
+      &::after {
+        position: absolute;
+        content: '🛞';
+        margin-top: -3px;
+        animation: infinite;
+        animation:spin 1s linear infinite;
+      }
+    }
     &:hover {
       background-color: #86b111;
     }
@@ -79,8 +91,20 @@ input {
   & + label {
     padding-top: 1rem;
   }
+  .success & {
+    border-bottom-color: #86b111;
 
+  }
   .error & {
+    background-color: rgba(206, 23, 3, 0.111);
     border-bottom-color: crimson;
   }
+}
+
+
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
 }
