@@ -1,20 +1,14 @@
-import { IMenuItem, Recipe } from "../Interfaces";
+import { IMenuItem, IRecipe } from "../Interfaces";
 import { Button } from "./Button";
-
-
-
 
 const MenuItem: React.FC<IMenuItem> = ({ recipe, toggleRecipe, activeList, removeRecipe }:IMenuItem) => {
 
     const itemIndex = activeList.findIndex((r)=> r.id === recipe.id);
     const isActive:boolean = itemIndex === -1 ? false : true;
 
-    function toggleActiveList(recipe:Recipe){
+    function toggleActiveList(recipe:IRecipe){
         toggleRecipe(recipe)
     }
-
-
-
 
     return (
       <li className="menu__item card">

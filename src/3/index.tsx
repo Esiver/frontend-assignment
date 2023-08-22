@@ -8,32 +8,25 @@ import "./index.scss";
 import { recipeData } from "./data";
 
 //interfaces
-import {  Recipe } from "./Interfaces";
+import {  IRecipe } from "./Interfaces";
 
 // components
 import MenuList from "./components/MenuList";
 import { SearchBar } from "./components/SearchBar";
 import { MenuItemForm } from "./components/MenuItemForm";
 
-// Menu Sales App
-  /*
-  * Overblik over biksen
-  * - Hvad har vi af menuer?
-  *   - Hvad koster den?
-  *   - Hvad koster det at lave den?
-  * - Hvad er der blevet solgt meget af?
-  * - Hvad er der blevet solgt lidt af?
-  */
+// Menu App
+
 
 const Task3: React.FunctionComponent = () => {
 
 
-  const [searchResultList, setSearchResultList] = useState<Recipe[]>([]);
-  const [recipeList, setRecipeList] = useState<Recipe[]>([...recipeData]);
-  const [activeList, setActiveList] = useState<Recipe[]>([])
+  const [searchResultList, setSearchResultList] = useState<IRecipe[]>([]);
+  const [recipeList, setRecipeList] = useState<IRecipe[]>([...recipeData]);
+  const [activeList, setActiveList] = useState<IRecipe[]>([])
 
 
-  function updateActiveList(recipe:Recipe){
+  function updateActiveList(recipe:IRecipe){
     const recipeIndex:number = activeList.findIndex((r)=> r.id === recipe.id);
     const hasRecipe:boolean = recipeList.findIndex((r)=> r.id === recipe.id) === -1 ? false : true;
 
@@ -45,7 +38,7 @@ const Task3: React.FunctionComponent = () => {
     }
   }
 
-  function removeRecipe(recipe:Recipe){
+  function removeRecipe(recipe:IRecipe){
     const prevRecipeList = [...recipeList];
     const indexToRemove = prevRecipeList.indexOf(recipe);
     if (indexToRemove !== -1) {

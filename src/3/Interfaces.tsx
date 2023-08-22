@@ -1,25 +1,25 @@
 import { Dispatch } from "react";
 
-export interface ButtonProps {
-    onClick: (e:void|Recipe) => void | Recipe;
+export interface IButtonProps {
+    onClick: (e:void|IRecipe) => void | IRecipe;
     text:string;
 }
 
-export interface SearchBarProps {
+export interface ISearchBarProps {
     onChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface IMenuItemFormProps {
     formTitle:string;
-    setTargetList:  Dispatch<React.SetStateAction<Recipe[]>>;
-    targetList:Recipe[];
+    setTargetList:  Dispatch<React.SetStateAction<IRecipe[]>>;
+    targetList:IRecipe[];
 }
 
 
 export interface IMaterial {
     title:string
 }
-export interface Recipe {
+export interface IRecipe {
     id:string;
     title:string;
     priceCurrency:string;
@@ -31,17 +31,17 @@ export interface Recipe {
 
 export interface IMenu {
     menuClass? : string;
-    recipeList: Recipe[];
-    activeList : Recipe[];
-    toggleRecipe:(recipeToAdd:Recipe) => void;
-    removeRecipe: (recipeToRemove:Recipe) => void;
+    recipeList: IRecipe[];
+    activeList : IRecipe[];
+    toggleRecipe:(recipeToAdd:IRecipe) => void;
+    removeRecipe: (recipeToRemove:IRecipe) => void;
 }
 
 export interface IMenuItem {
-    recipe:Recipe;
-    toggleRecipe: (recipeToAdd:Recipe) => void;
-    activeList : Recipe[];
-    removeRecipe: (recipeToRemove:Recipe) =>void;
+    recipe:IRecipe;
+    toggleRecipe: (recipeToAdd:IRecipe) => void;
+    activeList : IRecipe[];
+    removeRecipe: (recipeToRemove:IRecipe) =>void;
 
 }
 

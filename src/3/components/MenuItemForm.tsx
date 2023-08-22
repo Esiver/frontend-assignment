@@ -1,4 +1,4 @@
-import { Recipe, IMenuItemFormProps } from "../Interfaces";
+import { IRecipe, IMenuItemFormProps } from "../Interfaces";
 import { Button } from "./Button";
 import {  useState } from "react";
 
