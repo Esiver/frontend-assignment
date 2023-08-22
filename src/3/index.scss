@@ -1,4 +1,72 @@
+$color--main: rgb(0, 101, 141);
+$color--secondary: rgb(0, 10, 54);
+$color--button: darken($color--main, 10);
+$color--buton-text: white;
+
+$color--active: $color--main;
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-3 {
   /* Styles goes here */
+
+  
+
+
+
+}
+
+
+.card {
+  padding: 10px 12px;
+  border-radius: 3px;
+  background-color: $color--main;
+  color: white;
+
+  .active & {
+    box-shadow: 0 0 10px 0px $color--active;
+    background-color: lighten($color--main, 10%);
+  }
+  
+}
+
+
+.menu {
+  &__list {
+    $menulist:&;
+
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  &__item {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+}
+
+
+.button {
+  padding: 1rem 2rem;
+  background-color: $color--button;
+  color: $color--buton-text;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: lighten($color--button, 5);
+  }
+  & + .button {
+    margin-top: .5rem;
+  }
 }

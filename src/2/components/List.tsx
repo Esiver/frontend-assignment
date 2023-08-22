@@ -1,7 +1,8 @@
 import { FunctionComponent } from "react";
 
 // Components
-import Item from "./Item";
+import {Item, ItemProps} from "./Item";
+
 
 /*
  * The ListProps interface defines the types for the components props.
@@ -13,10 +14,25 @@ import Item from "./Item";
  * and remove the ListProps interface
  */
 
-interface ListProps {}
 
-const List: FunctionComponent<ListProps> = (props) => {
-  return <div>#List goes here#</div>;
+interface ListProps {
+  itemList:any[]
+
+};
+
+const List: FunctionComponent<ListProps> = (props:ListProps) => {
+
+  const listItems = props.itemList.map(item => <Item data={item} />)
+
+  return (
+    <>
+    <p>{props.itemList.length} results</p>
+    
+    <ul>
+      {listItems}
+    </ul>
+    </>
+  );
 };
 
 export default List;

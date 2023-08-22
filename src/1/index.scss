@@ -1,4 +1,70 @@
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-1 {
-  /* Styles goes here */
+  
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 6px;
+  padding: 2rem 2rem 2rem 2rem;
+
+  @media (max-width: 425px) {
+    padding: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    min-width: 205px;
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 3rem 2rem;
+
+      @media (max-width: 425px) {
+        padding: 1rem 1.25rem;
+      }
+  }
+
+  label {
+    padding-bottom: 6px;
+  }
+
+  input {
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    background: white;
+    border-bottom: 3px solid rgba(128, 128, 128, 0.425);
+    transition: outline border-color 200ms ease;
+    outline: 2px solid transparent; 
+
+    &:hover {
+      outline: 1px solid #cccccc;
+    }
+
+    &:focus-within {
+      border-bottom-color: #999999;
+      outline: 1px solid #999999;
+    }
+    & + label {
+      padding-top: 1rem;
+    }
+  }
+
+  
+
+  button {
+    padding: 0.75rem 1rem;
+    background-color: #63830d; 
+    font-size: 18px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+      background-color: #86b111;
+    }
+    &:last-child {
+      margin-top: 3rem;
+    }
+  }
+
 }

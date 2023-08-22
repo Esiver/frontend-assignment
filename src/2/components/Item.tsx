@@ -10,10 +10,19 @@ import { FunctionComponent } from "react";
  * and remove the ItemProps interface
  */
 
-interface ItemProps {}
+export interface ItemProps {
+  data: {name:string, language:string, id:string, bio:string, version:number}
+}
 
-const Item: FunctionComponent<ItemProps> = (props) => {
-  return <li>#Item goes here#</li>;
+export const Item: FunctionComponent<ItemProps> = (props) => {
+  return (
+    <li key={1}>
+      
+      <h2>{props.data.name}</h2>
+      <h3>{props.data.language}</h3>
+      <p>{props.data.bio}</p>
+    </li>
+  )
 };
 
-export default Item;
+// export default Item;
