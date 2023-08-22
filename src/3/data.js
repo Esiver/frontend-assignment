@@ -1,10 +1,11 @@
-export const recipies = [
+export const recipeData = [
     {
         "id":"1",
         "title":"Fish and Chips",
         "priceCurrency":"DKK",
         "price":200,
         "description":"lorem upsum lore ipsum"
+        
     },
     {
         "id":"2",

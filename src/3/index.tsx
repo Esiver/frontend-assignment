@@ -5,7 +5,7 @@ import { useState } from "react";
 import "./index.scss";
 
 // Data
-import { recipies } from "./data";
+import { recipeData } from "./data";
 
 //interfaces
 import {  Recipe } from "./Interfaces";
@@ -15,8 +15,8 @@ import MenuList from "./components/MenuList";
 import { SearchBar } from "./components/SearchBar";
 import { MenuItemForm } from "./components/MenuItemForm";
 
-// Menu Sales App 
-  /* 
+// Menu Sales App
+  /*
   * Overblik over biksen
   * - Hvad har vi af menuer?
   *   - Hvad koster den?
@@ -26,16 +26,21 @@ import { MenuItemForm } from "./components/MenuItemForm";
   */
 
 const Task3: React.FunctionComponent = () => {
+
+
   const [searchResultList, setSearchResultList] = useState<Recipe[]>([]);
-  const [recipeList, setRecipeList] = useState<Recipe[]>([...recipies]);
+  const [recipeList, setRecipeList] = useState<Recipe[]>([...recipeData]);
   const [activeList, setActiveList] = useState<Recipe[]>([])
 
-  function updateActiveList(recipe:Recipe){
-    const recipeIndex = activeList.findIndex((r)=> r.id === recipe.id);
 
-    if(recipeIndex === -1){
+  function updateActiveList(recipe:Recipe){
+    const recipeIndex:number = activeList.findIndex((r)=> r.id === recipe.id);
+    const hasRecipe:boolean = recipeList.findIndex((r)=> r.id === recipe.id) === -1 ? false : true;
+
+    if(recipeIndex === -1 && hasRecipe){
       setActiveList(prevList => [...prevList, recipe]);
     } else {
+      
       setActiveList(prevList => prevList.filter((r)=> r.id !== recipe.id))
     }
   }
@@ -48,8 +53,10 @@ const Task3: React.FunctionComponent = () => {
       setRecipeList(prevRecipeList)
     }
     updateActiveList(recipe)
+    setSearchResultList([])
   }
 
+  
   function handleSearch(e:React.ChangeEvent<HTMLInputElement>){
     
     if(e.target.value.length > 0 && e.target.value !== "") {
@@ -61,42 +68,42 @@ const Task3: React.FunctionComponent = () => {
     } else {setSearchResultList([])}
   }
 
-
   return (
   <div id="task-3">
-    <h3>Add new Recipe</h3>
-    <MenuItemForm 
+    
+    <MenuItemForm
+      formTitle = "Add New Recipe"
       setTargetList={setRecipeList}
-      targetList={recipeList} 
+      targetList={recipeList}
     />
 
     <h3>Filter</h3>
     <SearchBar onChange={handleSearch}/>
     <MenuList
-      
+
       recipeList={searchResultList}
       activeList={activeList}
       toggleRecipe={updateActiveList}
       removeRecipe={removeRecipe}
     />
     <br/>
-    
+
     <h2>Active Recipies</h2>
-    <MenuList 
-      menuClass = "active" 
-      activeList={activeList} 
-      toggleRecipe={updateActiveList} 
-      recipeList={activeList} 
+    <MenuList
+      menuClass = "active"
+      activeList={activeList}
+      toggleRecipe={updateActiveList}
+      recipeList={activeList}
       removeRecipe={removeRecipe}
 
     />
 
     <h2>All Recipies</h2>
-    <MenuList 
+    <MenuList
       menuClass = "inactive"
-      activeList={activeList} 
-      toggleRecipe={updateActiveList} 
-      recipeList={recipeList} 
+      activeList={activeList}
+      toggleRecipe={updateActiveList}
+      recipeList={recipeList}
       removeRecipe={removeRecipe}
 
     />
