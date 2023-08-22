@@ -9,10 +9,12 @@ import { Item, ItemProps } from "./components/Item";
 
 
 const Task2: FunctionComponent = () => {
-  const [data, setData] = useState(peopleData)
+  const [data, setData] = useState(peopleData) // 
   const [results, setResults] = useState(data)
   
   const handleChange = (inputValue:string) =>{
+    let query;
+    
     if(inputValue.length > 0 && inputValue != "" && inputValue != null) {
       
       const filteredData = data.filter(item => {

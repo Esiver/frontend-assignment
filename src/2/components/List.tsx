@@ -17,7 +17,6 @@ import {Item, ItemProps} from "./Item";
 
 interface ListProps {
   itemList:any[]
-
 };
 
 const List: FunctionComponent<ListProps> = (props:ListProps) => {
