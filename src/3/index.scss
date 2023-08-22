@@ -7,13 +7,16 @@ $color--active: $color--main;
 /* DO NOT CHANGE THIS ROOT CLASS NAME*/
 #task-3 {
   /* Styles goes here */
-
-  
-
-
-
+  label {
+    margin-top: 1rem;
+  }
+  input {
+    padding: 0.5rem 1rem;
+    & + input {
+      margin-top: 1rem;
+    }
+  }
 }
-
 
 .card {
   padding: 10px 12px;
@@ -25,9 +28,7 @@ $color--active: $color--main;
     box-shadow: 0 0 10px 0px $color--active;
     background-color: lighten($color--main, 10%);
   }
-  
 }
-
 
 .menu {
   &__list {
@@ -49,10 +50,14 @@ $color--active: $color--main;
   &__form {
     display: flex;
     flex-direction: column;
+    justify-content: left;
     flex: 1;
+    padding: 2rem 2rem;
+    color:white;
+    background-color: $color--main;
+    max-width: 500px;
   }
 }
-
 
 .button {
   padding: 1rem 2rem;
@@ -68,5 +73,8 @@ $color--active: $color--main;
   }
   & + .button {
     margin-top: .5rem;
+  }
+  &:last-child {
+    margin-top: 1rem;
   }
 }
