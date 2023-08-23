@@ -16,16 +16,45 @@ import { SearchBar } from "./components/SearchBar";
 import { MenuItemForm } from "./components/MenuItemForm";
 import { Notice } from "./components/Notice";
 import { Button } from "./components/Button";
+import { Recipe } from "./components/Recipe";
 
 // Menu App
 
 const Task3: React.FunctionComponent = () => {
   const [searchQuery, setSearchQuery] = useState<ISearchQuery>({ query: "" });
   const [searchResultList, setSearchResultList] = useState<IRecipe[]>([]);
+
   const [recipeList, setRecipeList] = useState<IRecipe[]>([...recipeData]);
   const [activeList, setActiveList] = useState<IRecipe[]>([]);
 
   const [showFilter, setShowFilter] = useState(true);
+
+  // getRecipeObjects(recipeData)
+
+  // function getRecipeObjects (recipeData:any[]) {
+  //   let recipeArr:IRecipe[];
+  //   recipeData.forEach(element => {
+  //     let rID = element.id;
+  //     let rTitle = element.title;
+  //     let rPrice = element.price;
+  //     let rCurrency = element.priceCurrency
+  //     let rDescription = element.description
+      
+  //     let recipe:IRecipe = {
+  //       id : rID,
+  //       title:rTitle,
+  //       price:rPrice,
+  //       priceCurrency:rCurrency,
+  //       description:rDescription,
+  //       delicious:false
+  //     };
+
+  //     // const recipeObj = new Recipe(recipe);
+
+  //     recipeArr.push(recipe);
+  //   });
+
+  // }
 
   function updateActiveList(recipe: IRecipe) {
     const recipeIndex: number = activeList.findIndex((r) => r.id === recipe.id);
@@ -54,7 +83,6 @@ const Task3: React.FunctionComponent = () => {
     setShowFilter((prevVisibility) => !prevVisibility);
   }
 
-
   function handleSearchInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setSearchQuery({ query: e.target.value });
     handleSearch({ query: e.target.value });
@@ -68,6 +96,12 @@ const Task3: React.FunctionComponent = () => {
     } else {
       setSearchResultList([]);
     }
+  }
+  function toggleRecipeDelicious(recipe:IRecipe){
+    recipe.delicious = !recipe.delicious;
+
+    setActiveList([...activeList]);
+    setRecipeList([...recipeList]);
   }
 
   return (
@@ -113,9 +147,10 @@ const Task3: React.FunctionComponent = () => {
           <MenuList
             menuClass="active"
             activeList={activeList}
-            toggleRecipe={updateActiveList}
             recipeList={activeList}
+            toggleRecipeDelicious={toggleRecipeDelicious}
             removeRecipe={removeRecipe}
+            toggleRecipe={updateActiveList}            
           />
         ) : (
           "no active recipes."

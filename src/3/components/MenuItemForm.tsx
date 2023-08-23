@@ -39,14 +39,13 @@ export const MenuItemForm:React.FunctionComponent<IMenuItemFormProps> = ({formTi
         const {title, description, price, priceCurrency} = input;
     
         let newId = generateId(title);
-        const recipe = {id:newId,title,description,price,priceCurrency};
+        const recipe = {id:newId,title,description,price,priceCurrency,delicious:false};
             
         if(!title || !description || !price || !priceCurrency) return;
 
         setTargetList([...targetList, recipe]);
 
         clearFields()
-        console.log(targetList)
     }   
         
 

@@ -58,7 +58,18 @@ $color--active: $color--main;
   justify-content: space-between;
   display: flex;
   flex-direction: column;
+  position: relative;
 
+  &__fnyt {
+    position: absolute;  
+    background-color: gold;
+    color: black;
+    padding: 4px 10px;
+    border-radius: 4px;
+    top: -16px;
+    right: 1rem;
+    user-select: none;
+  }
   &__buttons {
     display: flex;
     flex-direction: column;

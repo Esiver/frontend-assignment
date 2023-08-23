@@ -34,6 +34,7 @@ export interface IRecipe {
     price:number;
     description:string;
     materials?:IMaterial[];
+    delicious:boolean;
 }
 
 
@@ -41,14 +42,16 @@ export interface IMenu {
     menuClass? : string;
     recipeList: IRecipe[];
     activeList : IRecipe[];
+    toggleRecipeDelicious?:(recipe:IRecipe)=> void;
     toggleRecipe:(recipeToAdd:IRecipe) => void;
     removeRecipe: (recipeToRemove:IRecipe) => void;
 }
 
 export interface IMenuItem {
     recipe:IRecipe;
-    toggleRecipe: (recipeToAdd:IRecipe) => void;
     activeList : IRecipe[];
+    toggleRecipeDelicious?:(recipe:IRecipe)=>void;
+    toggleRecipe: (recipeToAdd:IRecipe) => void;
     removeRecipe: (recipeToRemove:IRecipe) =>void;
 
 }
